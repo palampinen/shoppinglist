@@ -8,7 +8,7 @@ angular.module('shoplist.controllers', [])
 
   //  Add item, parameters text, added, done
   $scope.addItem = function(text) {
-	$scope.items.$add({name:text, added:new Date().getTime(), done:false}).then(function(data) {
+	Items.$add({name:text, added:new Date().getTime(), done:false}).then(function(data) {
 		$scope.itemText = ''
 	});
 
