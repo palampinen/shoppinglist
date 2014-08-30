@@ -1,0 +1,11 @@
+<ion-view title="Ostetut">
+  <ion-content class="has-header">
+     <ion-list>
+      <ion-item ng-if="item.done" ng-repeat="item in items" item="item" >
+        <span class="name">{{item.name}}</span>
+	    <span class="item-note"><i class="icon ion-ios7-clock-outline"></i> {{ getTimeAgo(item.added) }} sitten</span>
+        <ion-option-button class="button-energized ion-ios7-plus-outline" ng-click="item.done=!item.done; item.added=today; items.$save(item)"> Tarvitaan</ion-option-button>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>

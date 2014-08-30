@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title>Ostoslista</title>
+
+  <link rel="shortcut icon" href="img/icon/favicon.ico" type="image/x-icon" />
+  <!-- Apple Touch Icons -->
+  <link rel="apple-touch-icon" href="img/icon/apple-touch-icon.png" />
+  <link rel="apple-touch-icon" sizes="57x57" href="img/icon/apple-touch-icon-57x57.png" />
+  <link rel="apple-touch-icon" sizes="72x72" href="img/icon/apple-touch-icon-72x72.png" />
+  <link rel="apple-touch-icon" sizes="114x114" href="img/icon/apple-touch-icon-114x114.png" />
+  <link rel="apple-touch-icon" sizes="144x144" href="img/icon/apple-touch-icon-144x144.png" />
+  <link rel="apple-touch-icon" sizes="57x57" href="img/icon/apple-touch-icon-60x60.png" />
+  <link rel="apple-touch-icon" sizes="72x72" href="img/icon/apple-touch-icon-120x120.png" />
+  <link rel="apple-touch-icon" sizes="114x114" href="img/icon/apple-touch-icon-76x76.png" />
+  <link rel="apple-touch-icon" sizes="144x144" href="img/icon/apple-touch-icon-152x152.png" />
+  <!-- Windows 8 Tile Icons -->
+      <meta name="msapplication-square70x70logo" content="img/iconsmalltile.png" />
+  <meta name="msapplication-square150x150logo" content="img/iconmediumtile.png" />
+  <meta name="msapplication-wide310x150logo" content="img/iconwidetile.png" />
+  <meta name="msapplication-square310x310logo" content="img/iconlargetile.png" />
+
+
+    <link href='http://fonts.googleapis.com/css?family=Muli:400,300' rel='stylesheet' type='text/css'>
+    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    
+    <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
+    <link href="css/ionic.app.css" rel="stylesheet">
+    -->
+
+    <!-- ionic/angularjs js -->
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+    <script src="https://cdn.firebase.com/js/client/1.0.21/firebase.js"></script>
+    <script src="https://cdn.firebase.com/libs/angularfire/0.8.2/angularfire.min.js"></script>
+    <!-- cordova script (this will be a 404 during development) 
+    <script src="cordova.js"></script>
+    -->
+
+    <!-- your app's js -->
+    <script src="js/app.js"></script>
+    <script src="js/controllers.js"></script>
+    <script src="js/services.js"></script>
+
+
+  </head>
+  <body ng-app="shoplist" animation="slide-left-right-ios7">
+    <!-- 
+      The nav bar that will be updated as we navigate between views.
+    -->
+    <ion-nav-bar class="bar-light nav-title-slide-ios7">
+      <ion-nav-back-button class="button-icon icon  ion-ios7-arrow-back">
+        Back
+      </ion-nav-back-button>
+    </ion-nav-bar>
+    <!-- 
+      The views will be rendered in the <ion-nav-view> directive below
+      Templates are in the /templates folder (but you could also
+      have templates inline in this html file if you'd like).
+    -->
+    <ion-nav-view></ion-nav-view>
+  </body>
+</html>

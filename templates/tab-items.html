@@ -1,0 +1,22 @@
+<ion-view title="Ostoslista">
+  <ion-content class="has-header">
+
+  	<form ng-submit="addItem(itemText)">
+	  	<div class="list list-inset">
+		  <label class="item item-input">
+		    <i class="icon ion-ios7-plus-empty placeholder-icon"></i>
+		    <input type="text" ng-model="itemText" placeholder="Lisää" />
+		  </label>
+		</div>
+	</form>
+	<br />
+    <ion-list can-swipe="true">
+      <ion-item ng-repeat="item in items" ng-if="!item.done"  >
+        <span class="name">{{item.name}}</span>
+	    <span class="item-note"><i class="icon ion-ios7-clock-outline"></i> {{ getTimeAgo(item.added) }} sitten</span>
+        <ion-option-button class="button-positive ion-ios7-checkmark-outline" ng-click="item.done=!item.done;item.added=today;items.$save(item)"> Ostin</ion-option-button>
+
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>
