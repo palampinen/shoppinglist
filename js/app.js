@@ -7,7 +7,7 @@
 // 'shoplist.controllers' is found in controllers.js
 angular.module('shoplist', ['ionic', 'shoplist.controllers', 'shoplist.services','firebase'])
 
-.value('fbURL', 'https://shoplister.firebaseio.com/@ep/')
+.value('fbURL', 'https://shoplister.firebaseio.com/ep/')
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {

@@ -1,22 +1,22 @@
 <ion-view title="Ostoslista">
 
 
-  <ion-content class="has-header">
+  <ion-content class="has-header mybg">
 
-  	<form ng-submit="addItem(itemText)">
-	  	<div class="list list-inset">
+  	<form ng-submit="addItem(itemText);itemText=''">
+	  	<div class="list list-inset list-inset-dark">
 		  <label class="item item-input">
 		    <i class="icon ion-ios7-plus-empty placeholder-icon"></i>
-		    <input type="text" ng-model="itemText" placeholder="Lisää" />
+		    <input class="input-dark dark" type="text" ng-model="itemText" placeholder="Lisää" />
 		  </label>
 		</div>
 	</form>
 	<br />
     <ion-list can-swipe="true">
-      <ion-item ng-repeat="item in items" ng-if="!item.done"  >
-        <span class="name">{{item.name}}</span>
+      <ion-item ng-click="item.important=!item.important;items.$save(item)" class="item-calm" ng-repeat="item in items | orderBy:'added':true" ng-if="!item.done"  >
+        <span class="name"><i ng-if="item.important" class="icon ion-ios7-star important dark"></i> {{item.name}}</span>
 	    <span class="item-note"><i class="icon ion-ios7-clock-outline"></i> {{ getTimeAgo(item.added) }} sitten</span>
-        <ion-option-button class="button-positive ion-ios7-checkmark-outline" ng-click="item.done=!item.done;item.added=today;items.$save(item)"> Ostin</ion-option-button>
+        <ion-option-button class="button-positive ion-ios7-checkmark-outline" ng-click="item.done=!item.done;item.added=today;item.important=false;items.$save(item)"> Ostin</ion-option-button>
 
       </ion-item>
     </ion-list>

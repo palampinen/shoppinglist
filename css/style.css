@@ -3,3 +3,24 @@
 html,body,h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6, .tab-item, input, button, select, textarea  {font-family: 'Muli','Helvetica Neue','Roboto','Segoe UI','Open Sans','sans-serif'; }
 .bar.bar-light .title {color:#43CEE6; text-transform: uppercase; font-weight: 300; font-size: 160%;}
 .item .name {float:left;text-transform: capitalize;}
+.item-options .button {line-height: 50px;}
+.important {opacity: 0.5;}
+
+.mybg {
+	background:#eee; 
+	display:block; 
+	height:100%;
+    background:#43CEE6;
+    background:-ms-linear-gradient(135deg, #30D1D1 0%, #43CEE6 100%);
+    background:-webkit-linear-gradient(135deg, #30D1D1 0%, #43CEE6 100%);
+    background:linear-gradient(135deg, #30D1D1 0%,#43CEE6 100%);
+    background:#43CEE6;
+}
+
+.mybg .list .item, .mybg .list .item-complex .item-content {border-color:rgba(255,255,255,.2); }
+.mybg .item-note {color:rgba(0,0,0,.35); font-size: 70%;}
+/*
+.mybg .list-inset-dark {background:rgba(255,255,255,.0); }
+.mybg .list-inset-dark .item-input {border:1px solid rgba(255,255,255,.8);}
+.mybg .list-inset-dark .input-dark {color:#fff; background: transparent;border-color:#ddd;}
+*/

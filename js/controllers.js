@@ -3,14 +3,15 @@ angular.module('shoplist.controllers', [])
 .controller('DashCtrl', function($scope) {
 })
 
-.controller('ItemsCtrl', function($scope, Items) {
+.controller('ItemsCtrl', function($scope, $timeout, Items) {
   $scope.items = Items;
 
   //  Add item, parameters text, added, done
   $scope.addItem = function(text) {
 	$scope.items.$add({name:text, added:new Date().getTime(), done:false}).then(function(data) {
-		$scope.itemText = '';
+		$scope.itemText = ''
 	});
+
   };
 
   //  Get time passed from last action 

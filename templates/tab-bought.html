@@ -1,17 +1,17 @@
 <ion-view title="Ostetut">
 
   <ion-nav-buttons side="left">
-    <button ng-click="canDelete=!canDelete" class="button button-light">Poista</button>  
+    <button ng-click="canDelete=!canDelete" class="button button-light">poista</button>  
   </ion-nav-buttons>
 
-  <ion-content class="has-header">
+  <ion-content class="has-header mybg">
      <ion-list show-delete="canDelete">
-      <ion-item ng-if="item.done" ng-repeat="item in items" item="item" >
+      <ion-item class="item-calm" ng-if="item.done" ng-repeat="item in items | orderBy:'added':true" item="item" >
         <span class="name">{{item.name}}</span>
 	    <span class="item-note"><i class="icon ion-ios7-clock-outline"></i> {{ getTimeAgo(item.added) }} sitten</span>
         <ion-option-button class="button-energized ion-ios7-plus-outline" ng-click="item.done=!item.done; item.added=today; items.$save(item)"> Tarvitaan</ion-option-button>
 
-        <ion-delete-button class="ion-ios7-close-outline" ng-click="items.$remove(item)"></ion-delete-button>
+        <ion-delete-button class="ion-ios7-close" ng-click="items.$remove(item)"></ion-delete-button>
       </ion-item>
     </ion-list>
   </ion-content>
