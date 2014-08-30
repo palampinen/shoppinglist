@@ -1,5 +1,5 @@
 /* Empty. Add your own CSS if you like */
 
-html,body,h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6, .tab-item  {font-family: 'Muli','Helvetica Neue','Roboto','Segoe UI','Open Sans','sans-serif'; }
+html,body,h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6, .tab-item, input, button, select, textarea  {font-family: 'Muli','Helvetica Neue','Roboto','Segoe UI','Open Sans','sans-serif'; }
 .bar.bar-light .title {color:#43CEE6; text-transform: uppercase; font-weight: 300; font-size: 160%;}
 .item .name {float:left;text-transform: capitalize;}
