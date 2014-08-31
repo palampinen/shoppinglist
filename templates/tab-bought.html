@@ -1,4 +1,4 @@
-<ion-view title="Ostetut">
+<ion-view title="Ostetut" hide-nav-bar="true">
 
   <ion-nav-buttons side="left">
     <button ng-click="canDelete=!canDelete" class="button button-calm">poista</button>  
@@ -9,7 +9,12 @@
       <ion-item ng-if="item.done" ng-repeat="item in items | orderBy:'name':false" item="item" >
         <span class="name">{{item.name}}</span>
 	    <span class="item-note"><i class="icon ion-ios7-clock-outline"></i> {{ getTimeAgo(item.added) }} sitten</span>
-        <ion-option-button class="button-energized ion-ios7-plus-outline" ng-click="item.done=!item.done; item.added=today; items.$save(item)"> Tarvitaan</ion-option-button>
+
+
+        <ion-option-button class="button-assertive ion-ios7-close-outline" ng-click="items.$remove(item)"> Poista</ion-option-button>
+
+
+        <ion-option-button class="button-positive ion-ios7-plus-outline" ng-click="item.done=!item.done; item.added=today; items.$save(item)"> Tarvitaan</ion-option-button>
 
         <ion-delete-button class="ion-ios7-close" ng-click="items.$remove(item)"></ion-delete-button>
       </ion-item>

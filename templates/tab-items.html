@@ -1,7 +1,6 @@
-<ion-view title="Ostoslista">
+<ion-view title="Ostoslista" hide-nav-bar="true">
 
-  <input class="input-dark dark add-input" type="text" ng-model="itemText" placeholder="Lisää" />
-  <ion-content class="has-header mybg">
+  <ion-content class="mybg">
 
   	<form class="addform" ng-submit="addItem(itemText);itemText=''">
   		<div class="list list-inset calm-bg">
@@ -10,7 +9,6 @@
 		    <input class="input-calm" type="text" ng-model="itemText" placeholder="Lisää ostoslistalle" />
 		  </label>
 		</div>
-
 	</form>
 	
     <ion-list can-swipe="true" class="buy-list">
