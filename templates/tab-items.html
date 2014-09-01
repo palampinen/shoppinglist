@@ -11,7 +11,7 @@
 		</div>
 	</form>
 	
-    <ion-list can-swipe="true" class="buy-list">
+    <ion-list can-swipe="true" class="buy-list" overflow-scroll="true">
       <ion-item ng-click="item.important=!item.important;items.$save(item)" ng-repeat="item in items | orderBy:'added':true" ng-if="!item.done"  >
         <span class="name"><i ng-if="item.important" class="icon ion-ios7-star important"></i> <i ng-if="!item.important" class="icon ion-ios7-star important unimportant"></i> {{item.name}}</span>
 	    <span class="item-note"><i class="icon ion-ios7-clock-outline"></i> {{ getTimeAgo(item.added) }} sitten</span>

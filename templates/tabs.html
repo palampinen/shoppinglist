@@ -2,18 +2,19 @@
   Create tabs with an icon and label, using the tabs-positive style. 
   Each tab's child <ion-nav-view> directive will have its own 
   navigation history that also transitions its views in and out.
+  tabs-background-calm tabs-color-light
 -->
-<ion-tabs class="tabs-icon-top tabs-background-stable tabs-color-calm no-border-tabs has-tabs-top tabs-top">
+<ion-tabs class="tabs-icon-top no-border-tabs has-tabs-top tabs-top tabs-calm tabs-background-calm tabs-color-light">
 
 
   <!-- Products Tab -->
-  <ion-tab title="Puuttuvat" class="calm" icon-on="ion-ios7-compose" icon-off="ion-ios7-compose-outline" href="#/tab/items">
+  <ion-tab title="Puuttuvat" class="" icon-on="ion-ios7-compose" icon-off="ion-ios7-compose-outline" href="#/tab/items">
     <ion-nav-view name="tab-items"></ion-nav-view>
   </ion-tab>
 
 
   <!-- Account Tab -->
-  <ion-tab title="Ostetut" class="calm" icon-on="ion-ios7-checkmark" icon-off="ion-ios7-checkmark-outline" href="#/tab/bought">
+  <ion-tab title="Ostetut" class="" icon-on="ion-ios7-checkmark" icon-off="ion-ios7-checkmark-outline" href="#/tab/bought">
     <ion-nav-view name="tab-bought"></ion-nav-view>
   </ion-tab>
 

@@ -5,8 +5,8 @@
   </ion-nav-buttons>
 
   <ion-content class="has-header mybg">
-     <ion-list show-delete="canDelete">
-      <ion-item ng-if="item.done" ng-repeat="item in items | orderBy:'name':false" item="item" >
+     <ion-list show-delete="canDelete" overflow-scroll="true">
+      <ion-item ng-if="item.done" ng-repeat="item in items | orderBy:'added':true" item="item" >
         <span class="name">{{item.name}}</span>
 	    <span class="item-note"><i class="icon ion-ios7-clock-outline"></i> {{ getTimeAgo(item.added) }} sitten</span>
 

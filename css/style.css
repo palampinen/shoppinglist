@@ -4,19 +4,25 @@ html,body,h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6, .tab-item, input
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6{	font-weight:400; font-family:'Montserrat','Muli','Helvetica Neue','Roboto','Segoe UI','Open Sans','sans-serif';  }
 
 
+.tabs-top.tabs-striped .tab-item.tab-item-active, .tabs-top.tabs-striped .tab-item.active, .tabs-top.tabs-striped .tab-item.activated {margin:0; border-width:0 !important;}
 .tabs-top > .tabs, .tabs.tabs-top  {top:0;}
 .scroll-content.has-tabs-top {top:50px;}
-.item .name {float:left;text-transform: capitalize; font-family:'Muli'; font-weight: 300;}
+.item .name {float:left;text-transform: uppercase; font-family:'Muli'; font-weight: 300; color:rgba(0,0,0,.4);}
 .item-options .button {line-height: 50px;font-size:70%}
 .yellow {color:#FFE389;}
 
-.item {boder-color:#eee; border-color:rgba(0,0,0,.07)}
-.item-note {font-size: 70%;}
-.buy-list .item .item-content{padding-left:60px;padding-right:10px;position:relative;}
+.item, .item-complex {border-color:#eee; border-color:rgba(0,0,0,.0)}
+.item-complex {background: #F5F0EB; border-width: 0;}
+.item-complex .item-content {background: #F5F0EB;}
+.item-complex:nth-child(2n) .item-content{background:#F1EBE4 }
+.item-complex.activated .item-content {background:#F7F2ED }
+
+.item-note {font-size: 70%; color:rgba(0,0,0,.3)}
+.buy-list .item .item-content{padding-left:45px;padding-right:10px;position:relative;}
 .important {
-	background:#DDD0C3;
+	background:transparent;
 	color: #FFF;
-	width: 52px;
+	width: 42px;
 	height: 53px;
 	display: block;
 	position: absolute;
@@ -25,9 +31,9 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6{	font-weight:400; font-fami
 	line-height: 50px;
 	text-align: center;
 	font-size: 20px;
-	color:#F9EB9A;
+	color:#FCB83A;
 }
-.unimportant {color:rgba(0,0,0,.3);}
+.unimportant {color:rgba(0,0,0,.15);}
 
 .bar.bar-calm.bar-header, .no-border-tabs > .tabs {border:0 !important;box-shadow: none !important;-webkit-box-shadow:none !important;} 
 .addform .list-inset {margin:0;padding:10px; background: #7ED6C6;}
