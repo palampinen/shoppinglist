@@ -1,13 +1,22 @@
 <ion-view title="Ostetut" hide-nav-bar="true">
 
-  <ion-nav-buttons side="left">
-    <button ng-click="canDelete=!canDelete" class="button button-calm">poista</button>  
-  </ion-nav-buttons>
+  <ion-content class="mybg" overflow-scroll="true">
 
-  <ion-content class="has-header mybg">
-     <ion-list show-delete="canDelete" overflow-scroll="true">
-      <ion-item ng-if="item.done" ng-repeat="item in items | orderBy:'added':true" item="item" >
-        <span class="name">{{item.name}}</span>
+  <form ng-show="showAdd" class="addform" ng-submit="addItem(itemText,true);itemText=''">
+      <div class="list list-inset calm-bg">
+      <label class="item item-input">
+        <i class="icon ion-ios7-plus-empty placeholder-icon"></i>
+        <input class="input-calm" type="text" ng-model="itemText" placeholder="Lisää ostettuihin" />
+      </label>
+    </div>
+  </form>
+
+     <ion-list class="buy-list" show-delete="canDelete" overflow-scroll="true" >
+      <ion-item ng-if="item.done" ng-repeat="item in items | orderBy:'added':true" item="item" ng-href="#/tab/bought/{{item.$id}}" ng-class="{new:item.added>lastChecked}" >
+        <span class="name">
+          <span class="item-img" ng-style="{'background-image':'url({{item.image}})'}"><i ng-if="!item.image" class="icon ion-ios7-camera-outline"></i></span>
+          {{item.name}}
+        </span>
 	    <span class="item-note"><i class="icon ion-ios7-clock-outline"></i> {{ getTimeAgo(item.added) }} sitten</span>
 
 

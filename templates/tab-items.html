@@ -1,8 +1,8 @@
 <ion-view title="Ostoslista" hide-nav-bar="true">
 
-  <ion-content class="mybg">
+  <ion-content class="mybg" overflow-scroll="true">
 
-  	<form class="addform" ng-submit="addItem(itemText);itemText=''">
+  <form ng-show="showAdd" class="addform" ng-submit="addItem(itemText,false);itemText=''">
   		<div class="list list-inset calm-bg">
 		  <label class="item item-input">
 		  	<i class="icon ion-ios7-plus-empty placeholder-icon"></i>
@@ -12,8 +12,16 @@
 	</form>
 	
     <ion-list can-swipe="true" class="buy-list" overflow-scroll="true">
-      <ion-item ng-click="item.important=!item.important;items.$save(item)" ng-repeat="item in items | orderBy:'added':true" ng-if="!item.done"  >
-        <span class="name"><i ng-if="item.important" class="icon ion-ios7-star important"></i> <i ng-if="!item.important" class="icon ion-ios7-star important unimportant"></i> {{item.name}}</span>
+      
+      <ion-item ng-repeat="item in items | orderBy:'added':true" ng-href="#/tab/item/{{item.$id}}" ng-class="{new:item.added>lastChecked}" ng-if="!item.done"  >
+        <span class="name">
+            <span class="item-img"  ng-style="{'background-image':'url({{item.image}})'}"></span>
+            <i class="icon ion-ios7-star important" ng-class="{unimportant:!item.important}"></i> 
+            {{item.name}}
+        </span>
+
+
+      
 	    <span class="item-note"><i class="icon ion-ios7-clock-outline"></i> {{ getTimeAgo(item.added) }} sitten</span>
         <ion-option-button class="button-positive ion-ios7-checkmark-outline" ng-click="item.done=!item.done;item.added=today;item.important=false;items.$save(item)"> Ostin</ion-option-button>
 

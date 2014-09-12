@@ -6,6 +6,11 @@
 -->
 <ion-tabs class="tabs-icon-top no-border-tabs has-tabs-top tabs-top tabs-calm tabs-background-calm tabs-color-light">
 
+  <!-- Add link -->
+  <ion-tab title="Lisää" class="" icon-on="ion-ios7-plus" icon-off="ion-ios7-plus-outline" href ng-click="toggleAdd()">
+    <ion-nav-view name="tab-login"></ion-nav-view>
+  </ion-tab>
+
 
   <!-- Products Tab -->
   <ion-tab title="Puuttuvat" class="" icon-on="ion-ios7-compose" icon-off="ion-ios7-compose-outline" href="#/tab/items">
@@ -18,5 +23,11 @@
     <ion-nav-view name="tab-bought"></ion-nav-view>
   </ion-tab>
 
+
+
+  <!-- Login Tab-->
+  <ion-tab title="FB" class="hide hidden" icon-on="ion-ios7-people" icon-off="ion-ios7-people-outline" href="#/tab/login">
+    <ion-nav-view name="tab-login"></ion-nav-view>
+  </ion-tab>
 
 </ion-tabs>

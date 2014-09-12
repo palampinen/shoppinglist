@@ -35,7 +35,8 @@ angular.module('shoplist', ['ionic', 'shoplist.controllers', 'shoplist.services'
     .state('tab', {
       url: "/tab",
       abstract: true,
-      templateUrl: "templates/tabs.html"
+      templateUrl: "templates/tabs.html",
+      controller: 'AppCtrl'
     })
 
     // Each tab has its own nav history stack:
@@ -65,6 +66,26 @@ angular.module('shoplist', ['ionic', 'shoplist.controllers', 'shoplist.services'
         'tab-bought': {
           templateUrl: 'templates/tab-bought.html',
           controller: 'ItemsCtrl'
+        }
+      }
+    })
+
+    .state('tab.bought-detail', {
+      url: '/bought/:itemId',
+      views: {
+        'tab-bought': {
+          templateUrl: 'templates/item-detail.html',
+          controller: 'ItemDetailCtrl'
+        }
+      }
+    })
+
+    .state('tab.login', {
+      url: "/login",
+      views: {
+        'tab-login': {
+          templateUrl: "templates/login.html",
+          controller: 'LoginCtrl'
         }
       }
     });

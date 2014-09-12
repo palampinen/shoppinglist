@@ -5,6 +5,51 @@
   The Friends service returns an array of friend data
 -->
 <ion-view title="{{item.name}}">
-  <ion-content has-header="true" padding="true">
+
+
+  <ion-nav-buttons side="right">
+    <button ng-click="fireFileUpload()" class="button button-calm button-icon icon ion-upload"></button> 
+    <button ng-click="fireCameraUpload()" class="button button-calm button-icon icon ion-ios7-camera-outline"></button> 
+  </ion-nav-buttons>
+
+  <ion-content has-header="true" padding="true" class="mybg">
+
+
+
+  <!-- Is product needed -->
+	<ul class="list">
+	  <li class="item item-toggle">
+	     <span class="name">Tarvitaan</span>
+	     <label class="toggle toggle-calm">
+	       <input type="checkbox" ng-checked="!item.done" ng-click="item.done=!item.done;item.added=today;item.$save()">
+	       <div class="track">
+	         <div class="handle"></div>
+	       </div>
+	     </label>
+	  </li>
+	  <li class="item item-toggle">
+	     <span class="name">Tärkeä</span>
+	     <label class="toggle toggle-calm">
+	       <input type="checkbox" ng-checked="item.important" ng-click="item.important=!item.important;item.$save()">
+	       <div class="track">
+	         <div class="handle"></div>
+	       </div>
+	     </label>
+	  </li>
+	</ul>
+
+  <!-- IMG -->
+  <input class="hidden" type="file" accept="image/*" capture="camera" id="camera-upload">
+  <input class="hidden" type="file" accept="image/*" id="file-upload">
+  <br/>
+  <button id="img-placeholder" ng-click="fireCameraUpload()" class="button button-calm button-outline button-icon ion-ios7-camera-outline img-placeholder" ng-show="!item.image"></button>
+
+
+  <img class="pano" id="pano" ng-if="item.image" ng-src="{{item.image}}" />
+
+
+  <button ng-click="item.image='';item.$save()" ng-if="item.image" class="button button-block button-calm button-outline icon-left ion-ios7-trash">poista kuva</button>
+
+
   </ion-content>
 </ion-view>
