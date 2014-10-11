@@ -3,27 +3,30 @@
   <ion-content class="mybg" overflow-scroll="true">
 
   <form ng-show="showAdd" class="addform" ng-submit="addItem(itemText,false);itemText=''">
-  		<div class="list list-inset calm-bg">
+  		<div class="list list-inset positive-bg">
 		  <label class="item item-input">
 		  	<i class="icon ion-ios7-plus-empty placeholder-icon"></i>
-		    <input class="input-calm" type="text" ng-model="itemText" placeholder="Lisää ostoslistalle" />
+		    <input id="addInput" class="input-calm" type="text" ng-model="itemText" placeholder="Lisää ostoslistalle" />
 		  </label>
 		</div>
 	</form>
 	
+    <h2 class="loading" ng-if="!loaded"><i class="icon ion-loading-c"></i></h2>
+
     <ion-list can-swipe="true" class="buy-list" overflow-scroll="true">
       
       <ion-item ng-repeat="item in items | orderBy:'added':true" ng-href="#/tab/item/{{item.$id}}" ng-class="{new:item.added>lastChecked}" ng-if="!item.done"  >
         <span class="name">
-            <span class="item-img"  ng-style="{'background-image':'url({{item.image}})'}"></span>
+            <span class="item-img"  ng-style="{'background-image':'url({{item.image}})'}"><i ng-if="!item.image" class="icon ion-ios7-cart"></i></span>
             <i class="icon ion-ios7-star important" ng-class="{unimportant:!item.important}"></i> 
             {{item.name}}
         </span>
 
 
       
-	    <span class="item-note"><i class="icon ion-ios7-clock-outline"></i> {{ getTimeAgo(item.added) }} sitten</span>
-        <ion-option-button class="button-positive ion-ios7-checkmark-outline" ng-click="item.done=!item.done;item.added=today;item.important=false;items.$save(item)"> Ostin</ion-option-button>
+        <span class="badge badge-positive" ng-if="item.added>lastChecked">uusi</span>
+        <span class="item-note"><!--<i class="icon ion-ios7-clock-outline"></i>--> {{ getTimeAgo(item.added) }}</span>
+        <ion-option-button class="button-positive ion-ios7-checkmark-outline" ng-click="toggleItem(item,items)"> Otin</ion-option-button>
 
       </ion-item>
     </ion-list>

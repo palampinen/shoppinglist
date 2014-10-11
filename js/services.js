@@ -10,12 +10,25 @@ angular.module('shoplist.services', [])
 })
 
 .factory('Item', function($firebase, fbURL) {
+
+ 	// var deferred = $q.defer();
+
   // Add three-way data binding
   return {
 		single: function(id) {
 			return $firebase(new Firebase(fbURL+id)).$asObject();
+			/*
+			fb.$loaded().then(function(data) {
+				//$firebase(new Firebase(fbURL+id)).$asObject();
+				deferred.resolve(data) 
+			});
+
+			return deferred.promise;
+			*/
 		}
 	}
+
+
 
 
 })

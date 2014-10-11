@@ -3,27 +3,31 @@
   <ion-content class="mybg" overflow-scroll="true">
 
   <form ng-show="showAdd" class="addform" ng-submit="addItem(itemText,true);itemText=''">
-      <div class="list list-inset calm-bg">
+      <div class="list list-inset positive-bg">
       <label class="item item-input">
         <i class="icon ion-ios7-plus-empty placeholder-icon"></i>
-        <input class="input-calm" type="text" ng-model="itemText" placeholder="Lisää ostettuihin" />
+        <input id="addInput2" class="input-calm" type="text" ng-model="itemText" placeholder="Lisää ostettuihin" />
       </label>
     </div>
   </form>
 
-     <ion-list class="buy-list" show-delete="canDelete" overflow-scroll="true" >
+    <h2 class="loading" ng-if="!loaded"><i class="icon ion-loading-c"></i></h2>
+    
+     <ion-list class="buy-list" can-swipe="true" overflow-scroll="true" >
       <ion-item ng-if="item.done" ng-repeat="item in items | orderBy:'added':true" item="item" ng-href="#/tab/bought/{{item.$id}}" ng-class="{new:item.added>lastChecked}" >
         <span class="name">
-          <span class="item-img" ng-style="{'background-image':'url({{item.image}})'}"><i ng-if="!item.image" class="icon ion-ios7-camera-outline"></i></span>
+          <span class="item-img" ng-style="{'background-image':'url({{item.image}})'}"><i ng-if="!item.image" class="icon ion-ios7-cart"></i></span>
           {{item.name}}
         </span>
-	    <span class="item-note"><i class="icon ion-ios7-clock-outline"></i> {{ getTimeAgo(item.added) }} sitten</span>
+
+        <span class="badge badge-positive" ng-if="item.added>lastChecked">uusi</span>
+	      <span class="item-note"><!--<i class="icon ion-ios7-clock-outline"></i>--> {{ getTimeAgo(item.added) }}</span>
 
 
         <ion-option-button class="button-assertive ion-ios7-close-outline" ng-click="items.$remove(item)"> Poista</ion-option-button>
 
 
-        <ion-option-button class="button-positive ion-ios7-plus-outline" ng-click="item.done=!item.done; item.added=today; items.$save(item)"> Tarvitaan</ion-option-button>
+        <ion-option-button class="button-positive ion-ios7-plus-outline" ng-click="toggleItem(item,items)"> Tarvitaan</ion-option-button>
 
         <ion-delete-button class="ion-ios7-close" ng-click="items.$remove(item)"></ion-delete-button>
       </ion-item>

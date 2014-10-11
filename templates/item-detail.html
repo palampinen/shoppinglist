@@ -8,15 +8,40 @@
 
 
   <ion-nav-buttons side="right">
-    <button ng-click="fireFileUpload()" class="button button-calm button-icon icon ion-upload"></button> 
-    <button ng-click="fireCameraUpload()" class="button button-calm button-icon icon ion-ios7-camera-outline"></button> 
+    <!--<button ng-click="fireFileUpload()" class="button button-calm button-icon icon ion-upload"></button> -->
+    <button ng-click="fireCameraUpload()" class="button button-positive button-icon icon ion-ios7-camera-outline"></button> 
   </ion-nav-buttons>
 
-  <ion-content has-header="true" padding="true" class="mybg">
+  <ion-content has-header="true" padding="" >
 
+  <div class="fakebg">
+  	<a href ng-click="item.important=!item.important;item.$save()" class="button button-icon" ng-class="{'on':item.important, 'ion-ios7-star':item.important,'ion-ios7-star-outline':!item.important}" >
+  	</a>
+  </div>
+  <!-- .pullup -->
+  <div class="pullup">
+  <button id="img-placeholder" ng-click="fireCameraUpload()" class="button button-stable button-large icon ion-ios7-cart-outline img-placeholder" ng-show="!item.image"></button>
+  <span ng-if="item.image" class="pano roundimgwrap" id="pano"  ng-style="{'background-image':'url({{item.image}})'}"></span>
+  <h2 class="productname">{{item.name}}</h2>
 
+<div class="center">
+	<button ng-click="toggleItem(item)" class="button button-positive icon-left ion-ios7-checkmark-outline button-outline" ng-class="{'button-calm':item.done}">
+		<span ng-if="item.done">Ei tarvita</span>
+		<span ng-if="!item.done">Tarvitaan</span>
+	</button>
+</div>
 
-  <!-- Is product needed -->
+<!--
+<div style="width:100%;position:relative; height:150px;">
+	<canvas id="itemChart" style=" margin: 10px auto; display:block; width:100%;"  height="120"></canvas>
+</div>
+-->
+
+<h2 class="historytitle dark"><i class="icon ion-ios7-clock"></i></h2>
+<ul class="history">
+	<li ng-repeat="bought in item.boughtTime "><i class="icon ion-ios7-calendar"></i> {{format(bought)}} <span class="ago item-note">{{getTimeAgo(bought)}}</span></li>
+</UL>
+  <!-- Is product needed 
 	<ul class="list">
 	  <li class="item item-toggle">
 	     <span class="name">Tarvitaan</span>
@@ -37,19 +62,19 @@
 	     </label>
 	  </li>
 	</ul>
+	-->
 
   <!-- IMG -->
   <input class="hidden" type="file" accept="image/*" capture="camera" id="camera-upload">
   <input class="hidden" type="file" accept="image/*" id="file-upload">
   <br/>
-  <button id="img-placeholder" ng-click="fireCameraUpload()" class="button button-calm button-outline button-icon ion-ios7-camera-outline img-placeholder" ng-show="!item.image"></button>
 
 
-  <img class="pano" id="pano" ng-if="item.image" ng-src="{{item.image}}" />
-
-
+<!--
   <button ng-click="item.image='';item.$save()" ng-if="item.image" class="button button-block button-calm button-outline icon-left ion-ios7-trash">poista kuva</button>
+-->
 
+</div><!-- /.pullup -->
 
   </ion-content>
 </ion-view>

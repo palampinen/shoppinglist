@@ -2,12 +2,23 @@ angular.module('shoplist.controllers', [])
 
 
 
-.controller('AppCtrl', function($scope) {
+.controller('AppCtrl', function($scope,$location,$timeout) {
   $scope.showAdd = false;
   $scope.toggleAdd = function(){
     $scope.showAdd = !$scope.showAdd
+    
 
+    $timeout(function(){
+      if(document.getElementById('addInput'))
+        document.getElementById('addInput').focus();
+      else 
+        document.getElementById('addInput2').focus();
+    });
+    
   }
+
+
+
 })
 
 .controller('LoginCtrl', function($scope,Auth) {
@@ -21,8 +32,26 @@ angular.module('shoplist.controllers', [])
 
 .controller('ItemsCtrl', function($scope, $timeout, Items, Last) {
 
+  Items.$loaded().then(function(data) {
+      $scope.loaded = true;
+  });
+
   $scope.lastChecked = Last;
   $scope.items = Items;
+
+    // Today for modifying added-value
+  $scope.today = new Date().getTime();
+
+  $scope.toggleItem = function(item,items) {
+    if(item.done)
+      (item.endTime != undefined) ? item.endTime.push(new Date().getTime()) : item.endTime = [new Date().getTime()]; 
+    else
+      (item.boughtTime != undefined) ? item.boughtTime.push(new Date().getTime()) : item.boughtTime = [new Date().getTime()];
+
+    item.done=!item.done;
+    item.added= new Date().getTime();
+    items.$save(item)
+  }
 
   //  Add item, parameters text, added, done
   $scope.addItem = function(text,bought) {
@@ -38,6 +67,13 @@ angular.module('shoplist.controllers', [])
 
           Items[i].done = bought;
           Items[i].added = added;
+
+        if(!bought)
+          (Items[i].endTime != undefined) ? Items[i].endTime.push(new Date().getTime()) : Items[i].endTime = [new Date().getTime()]; 
+        else
+          (Items[i].boughtTime != undefined) ? Items[i].boughtTime.push(new Date().getTime()) : Items[i].boughtTime = [new Date().getTime()];
+
+
           Items.$save(Items[i]);
           exists = true;
           // end loop
@@ -66,20 +102,129 @@ angular.module('shoplist.controllers', [])
 	  	return Math.round(diff/60/24) + ' pv';
   }
 
-  // Today for modifying added-value
-  $scope.today = new Date().getTime();
+
 
 })
 
 
 .controller('ItemDetailCtrl', function($scope, $stateParams, Item,fbURL) {
 
-  $scope.item = Item.single($stateParams.itemId);
+ // $scope.item = Item.single($stateParams.itemId);
   $scope.today = new Date().getTime();
 
 
+  /* Async Trial
+  Item.single($stateParams.itemId).then(function(data) {
+      $scope.item = data;
+  });
+  */
 
 
+  $scope.format = function(timestamp) {
+    var time = new Date(timestamp);
+    return time.getDate() + '.' + (parseInt(time.getMonth())+1) + '.' + time.getFullYear();
+  }
+
+  $scope.getTimeAgo = function(ago) {
+  var diff = (new Date().getTime() - ago) / 60000; // minutes
+
+  if(diff < 60)
+      return Math.round(diff) + ' min';
+  else if(diff < 60 * 24)
+      return Math.round(diff/60) + ' h';
+  else (diff < 60 * 24)
+      return Math.round(diff/60/24) + ' pv';
+  }
+
+
+
+  Item.single($stateParams.itemId).$loaded().then(function(data) {
+    
+    if ( data.boughtTime)
+     data.boughtTime = data.boughtTime.reverse()
+
+    $scope.item = data
+
+
+    var data = {
+        labels: ["Tammi", "Helmi", "Maalis", "Huhti", "Touko", "Kesä", "Heinä","Elo","Syys"],
+        datasets: [
+            {
+                label: $scope.item.name,
+                fillColor: "rgba(220,220,220,0.1)",
+                strokeColor: "#A0968A",
+                pointColor: "#A0968A",
+              
+                pointStrokeColor: "#fff",
+                pointHighlightFill: "#fff",
+                pointHighlightStroke: "rgba(220,220,220,1)",
+                data: [1, 2, 4, 1, 5, 5, $scope.item.endTime.length]
+            }
+        ]
+    };
+    var options = {
+      scaleFontFamily: "'Muli', 'Helvetica', 'Arial', sans-serif",
+      scaleFontColor: "#C9BFB3",
+      scaleFontSize: 9,
+      scaleFontStyle: "300",
+      ///Boolean - Whether grid lines are shown across the chart
+      scaleShowGridLines : true,
+
+      //String - Colour of the grid lines
+      scaleGridLineColor : "rgba(0,0,0,.0)",
+
+      //Number - Width of the grid lines
+      scaleGridLineWidth : 1,
+
+      //Boolean - Whether the line is curved between points
+      bezierCurve : true,
+
+      //Number - Tension of the bezier curve between points
+      bezierCurveTension : 0.4,
+
+      //Boolean - Whether to show a dot for each point
+      pointDot : true,
+
+      //Number - Radius of each point dot in pixels
+      pointDotRadius : 4,
+
+      //Number - Pixel width of point dot stroke
+      pointDotStrokeWidth : 1,
+
+      //Number - amount extra to add to the radius to cater for hit detection outside the drawn point
+      pointHitDetectionRadius : 20,
+
+      //Boolean - Whether to show a stroke for datasets
+      datasetStroke : true,
+
+      //Number - Pixel width of dataset stroke
+      datasetStrokeWidth : 1,
+
+      //Boolean - Whether to fill the dataset with a colour
+      datasetFill : true,
+
+      //String - A legend template
+      legendTemplate : "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){%><li><span style=\"background-color:<%=datasets[i].lineColor%>\"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>"
+
+  };
+
+/*
+    var ctx = document.getElementById("itemChart").getContext("2d");
+    var lineChart = new Chart(ctx).Line(data, options);
+*/
+  $scope.toggleItem = function(item) {
+    if(item.done)
+      (item.endTime != undefined) ? item.endTime.push(new Date().getTime()) : item.endTime = [new Date().getTime()]; 
+    else
+      (item.boughtTime != undefined) ? item.boughtTime.push(new Date().getTime()) : item.boughtTime = [new Date().getTime()];
+
+    item.done=!item.done;
+    item.added= new Date().getTime();
+    item.$save();
+
+  }
+
+}); 
 
 function imageToDataUri(imgDataUrl, width, height) {
     var img = new Image();

@@ -1,18 +1,24 @@
 /* Empty. Add your own CSS if you like */
 
 html,body,h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6, .tab-item, input, button, select, textarea  {font-family: 'Montserrat','Muli','Helvetica Neue','Roboto','Segoe UI','Open Sans','sans-serif'; }
-h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6{	font-weight:400; font-family:'Montserrat','Muli','Helvetica Neue','Roboto','Segoe UI','Open Sans','sans-serif';  }
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6{	font-weight:300; font-family:'Muli','Helvetica Neue','Roboto','Segoe UI','Open Sans','sans-serif';  }
 
-.bar .title {text-transform: capitalize;}
-
+.bar .title {text-transform: capitalize;height:58px;line-height: 58px; }
+.bar .title + .buttons {top:7px;}
+#top {padding:12px 5px; height:57px;}
+#top.bar.bar-calm {border-color:#7ED6C6;border:0;}
 .tabs-top.tabs-striped .tab-item.tab-item-active, .tabs-top.tabs-striped .tab-item.active, .tabs-top.tabs-striped .tab-item.activated {margin:0; border-width:0 !important;}
 .tabs-top > .tabs, .tabs.tabs-top  {top:0;}
-.scroll-content.has-tabs-top {top:50px;}
-.item .name {float:left;text-transform: uppercase; font-family:'Muli','Montserrat','Helvetica Neue','Roboto','Segoe UI','Open Sans','sans-serif'; font-weight: 300; color:rgba(0,0,0,.4);}
+.tabs-icon-top .tabs {height:55px;line-height: 55px;}
+.scroll-content.has-tabs-top {top:56px}
+.tabs-icon-top .tab-item {padding-top:4px;}
+.item .name {float:left;text-transform: uppercase; font-family:'Muli','Montserrat','Helvetica Neue','Roboto','Segoe UI','Open Sans','sans-serif'; font-weight: 300; color:#A0968A;}
 .item-options .button {line-height: 50px;font-size:70%}
 .yellow {color:#FFE389;}
 
-.item-img {display:block; position: absolute;left:0; top:0;height:51px;width:50px; z-index: 1;
+.item-complex .item-content {padding-top: 19px; padding-bottom:19px;}
+
+.item-img {display:block; position: absolute;left:10px; top:7px;height:44px;width:44px; z-index: 1;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -20,11 +26,15 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6{	font-weight:400; font-fami
   background-attachment: scroll;
   background-repeat: no-repeat;
   background-position: center center; 
-  background-color:rgba(255,255,255,.1); 
+  background-color:rgba(255,255,255,.9); 
   text-align: center;
-  line-height: 51px;
+  line-height: 44px;
   color:#7ED6C6;
+  color:#C9BFB3;
   font-size: 25px;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+
  }
 .item-img img {display:block; max-width: 100%}
 
@@ -34,12 +44,15 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6{	font-weight:400; font-fami
 .item-complex:nth-child(2n) .item-content{background:#F1EBE4 }
 
 .item-complex.activated .item-content {background:#F7F2ED }
+/*
 .item-complex.new .item-content {background: #D6C0A9; color:#fff;}
 .item-complex.new .item-content .name, .item-complex.new .item-content .item-note {color:#FFF;}
+*/
 
-.item-note {font-size: 70%; color:rgba(0,0,0,.3)}
-.buy-list .item .item-content{padding-left:55px;padding-right:10px;position:relative;}
-.compact-list .item .item-content{padding-left:55px;padding-right:10px;}
+.item-note {font-size: 70%; color:rgba(0,0,0,.2)}
+.item .badge {right:50px;}
+.buy-list .item .item-content{padding-left:65px;padding-right:10px;position:relative;}
+.compact-list .item .item-content{padding-left:65px;padding-right:10px;}
 .important {
 	background:transparent;
 	color: #FFF;
@@ -47,28 +60,56 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6{	font-weight:400; font-fami
 	height: 50px;
 	display: block;
 	position: absolute;
-	left: 0px;
+	left: 20px;
 	top: 0px;
-	line-height: 50px;
+	line-height: 20px;
 	text-align: center;
 	font-size: 20px;
 	color:#FCB83A;
+  color:#CF5777;
+	color:#F0B840;
 	z-index: 2;
+	opacity:0.9;
 }
-.unimportant {color:rgba(0,0,0,.15);}
+.unimportant {color:rgba(0,0,0,.0);}
 
 .bar.bar-calm.bar-header, .no-border-tabs > .tabs {border:0 !important;box-shadow: none !important;-webkit-box-shadow:none !important;} 
-.addform .list-inset {margin:0;padding:10px; background: #7ED6C6;}
+.addform .list-inset {margin:0;padding:10px; background: #4A87EE;}
 
 .mybg {
 	background: #F5F0EB;
-    
+  
 }
 
 
 /* Item Detail */
 .hidden {display: none;}
-img.pano {max-width: 90%; margin: 0 auto;display: block;}
-.img-placeholder {border:1px solid #7ED6C6; border-radius:3px; -webkit-border-radius:3px;display: block;width:90%; height: 150px; margin:0 auto; font-size:80px; line-height:150px; text-align: center;color: #7ED6C6; background: rgba(255,255,255,.05);}
+
+.fakebg{content:'';background: #F5F0EB; height: 120px; width: 100%; display: block;}
+.fakebg .button {position: absolute;right: 5px; top:5px;color:rgba(0,0,0,.3);font-size:30px;}
+.fakebg .button.on {color:#F0B840;}
+.pullup {  position: relative;top:-60px;}
+
+.roundimgwrap {display:block;margin: 0px auto 0;border-radius: 50%;-webkit-border-radius:50%;overflow: hidden; width:120px; height:120px;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-attachment: scroll;
+  background-repeat: no-repeat;
+  background-position: center center; 
+  background-color:rgba(255,255,255,.9); 
+  text-align: center;
+}
+.img-placeholder {border:1px solid #7ED6C6; border:0 !important; border-radius:50%; -webkit-border-radius:50%;display: block;width:120px; height: 120px;  margin:0 auto; font-size:40px; line-height:120px; text-align: center;color: #7ED6C6; background: #EDE4DC !important;}
+.img-placeholder:before {line-height: 120px !important;}
 .img-placeholder:hover, .img-placeholder:active, .img-placeholder:focus, .img-placeholder.activated {color:rgba(0,0,0,.3);}
 .button-center {margin:10px auto 0;}
+.productname {text-align: center;color:rgba(0,0,0,.6); margin-top:10px; font-weight: 300; font-family:'Muli','Montserrat','Helvetica Neue','Roboto','Segoe UI','Open Sans','sans-serif';text-transform: capitalize;}
+
+.loading {text-align:center; color:#999;color:rgba(0,0,0,.2); margin:-25px 0 0 -25px ; width:50px; height:50px; font-size:400%;position: fixed;top:50%; left:50%;}
+.center {text-align:center; }
+
+.historytitle {margin-left:25px;margin-bottom: 0}
+.history li {text-align: left;padding: 5px 10px ;margin:0 15px; display: block;border-bottom:1px dashed rgba(0,0,0,.2); color:rgba(0,0,0,.6);}
+.history li .ago {float: right;}

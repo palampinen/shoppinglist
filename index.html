@@ -3,6 +3,8 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
     <title>Ostoslista</title>
 
   <link rel="shortcut icon" href="img/icon/favicon.ico" type="image/x-icon" />
@@ -42,6 +44,7 @@
     -->
 
     <!-- your app's js -->
+    <script src="lib/chartjs/Chart.min.js"></script>
     <script src="js/app.js"></script>
     <script src="js/controllers.js"></script>
     <script src="js/services.js"></script>
@@ -53,8 +56,8 @@
       The nav bar that will be updated as we navigate between views.
     -->
 
-    <ion-nav-bar class="bar-calm nav-title-slide-ios7">
-      <ion-nav-back-button class="button-icon icon  ion-ios7-arrow-back">
+    <ion-nav-bar class="bar-positive nav-title-slide-ios7" id="top" >
+      <ion-nav-back-button class="button-icon icon ion-ios7-arrow-back">
         Palaa
       </ion-nav-back-button>
     </ion-nav-bar>
